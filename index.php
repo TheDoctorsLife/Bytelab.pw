@@ -90,7 +90,7 @@
                         below, or <a href="mailto:contact@bytelab.pw">email us</a>!</i></p>
 
                 <form class="pure-form pure-form-stacked is-center" id="contact"
-                      action="mailto:support@bytelab.pw" method="post" enctype="text/plain">
+                      action="mailto:contact@bytelab.pw" method="post" enctype="text/plain">
                     <fieldset>
                         <label for="name">Your Name</label>
                         <input id="name" type="text" placeholder="Your Name">
