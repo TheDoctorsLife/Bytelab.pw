@@ -12,6 +12,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Just the website to display the work of a few ragtag developers,
+            and provide links to their work.">
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -87,7 +89,8 @@
                 <p class="is-center"><i>That's alright, because we like hearing from you! Go ahead and fill out the form
                         below, or <a href="mailto:contact@bytelab.pw">email us</a>!</i></p>
 
-                <form class="pure-form pure-form-stacked is-center" id="contact" action="mailto:support@bytelab.pw" method="post" enctype="text/plain">
+                <form class="pure-form pure-form-stacked is-center" id="contact"
+                      action="mailto:support@bytelab.pw" method="post" enctype="text/plain">
                     <fieldset>
                         <label for="name">Your Name</label>
                         <input id="name" type="text" placeholder="Your Name">
