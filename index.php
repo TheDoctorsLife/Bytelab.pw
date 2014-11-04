@@ -59,7 +59,7 @@
                         <div class="l-box">
                             <h3 class="content-subhead">
                                 <i class="fa fa-fw fa-asterisk"></i>
-                                Warbands</h3>
+                                <a href="http://wp.bytelab.pw" target="_blank">Warbands</a></h3>
                             <p>Warbands is an alternative to the popular plugin Factions, designed to be more modular
                                 and less bloated! The plugin has all of the features that made Factions unique and
                                 amazing, but none of the ones that made it difficult to setup and configure!
