@@ -61,7 +61,7 @@
                 <a class="pure-menu-heading" href>ByteLab</a>
                 <ul>
                     <li><a href="https://github.com/Byte-Lab" target="_blank">
-                            <i class="fa fa-fw fa-github" target="_blank"></i>
+                            <i class="fa fa-fw fa-github"></i>
                             Source</a></li>
                     <li><a href="http://ci.bytelab.pw">
                             <i class="fa fa-fw fa-tasks"></i>
