@@ -28,7 +28,7 @@
         }
 
 
-        $to = "ferusgirm@gmail.com";
+        $to = "contact@bytelab.pw";
         $from = "$name<$email>";
         $subject = substr($message, 0, 32) . "...";
         $body = "From: $name\nEmail: $email\n\n$message";
