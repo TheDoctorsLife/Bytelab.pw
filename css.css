@@ -151,8 +151,18 @@ label {
     color: #2578FF;
     font-size: 160%;
 }
-.content-subhead i {
+.l-box i {
     margin-right: 3px;
+}
+
+.l-box a {
+    color: #2578FF;
+    text-decoration: none;
+}
+
+.l-box a:visited {
+    color: #2578FF;
+    text-decoration: none;
 }
 
 .ribbon {
