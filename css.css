@@ -151,8 +151,18 @@ label {
     color: #2578FF;
     font-size: 160%;
 }
-.content-subhead i {
+.l-box i {
     margin-right: 3px;
+}
+
+.l-box a {
+    color: #2578FF;
+    text-decoration: none;
+}
+
+.l-box a:visited {
+    color: #2578FF;
+    text-decoration: none;
 }
 
 .ribbon {
@@ -195,6 +205,10 @@ label {
     color: #FFFFFF;
     padding: 0.5em 2em;
     border-radius: 10px;
+}
+
+.email-notice {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .footer {
