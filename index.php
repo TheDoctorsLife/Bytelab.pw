@@ -29,10 +29,12 @@
 
 
         $to = "contact@bytelab.pw";
-        $from = "$name<$email>";
         $subject = substr($message, 0, 32) . "...";
-        $body = "From: $name\nEmail: $email\n\n$message";
-        return mail($to, $subject, $body, $from) ? true : false;
+        $body = "From: $name<br/>Reply: $email<br/><br/>$message";
+        $headers = "From: $name <$email>" . "\r\n";
+        $headers .= "Reply-To: $email" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        return @mail($to, $subject, $body, $headers) ? true : false;
     }
 
 ?>
