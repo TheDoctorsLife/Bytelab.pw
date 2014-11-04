@@ -1,1 +1,1 @@
-Nothing here yet, Why don't you visit the <html><a href="https://forums.spongepowered.org" target="_blank">Sponge Forums</a></html>or use the contact forum below and give us an idea for a new plugin?
+Nothing here yet, Why don't you visit the <html><a href="https://forums.spongepowered.org" target="_blank">Sponge Forums</a></html> or use the contact forum below and give us an idea for a new plugin?
