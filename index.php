@@ -5,8 +5,37 @@
         return $slogans[array_rand($slogans)];
     }
 
-?>
+    function mail_sent_correctly() {
 
+        if (!isset($_POST["name"]) || !isset($_POST["email"]) || !isset($_POST["content"])) {
+            return false;
+        }
+
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $message = $_POST["content"];
+
+        if ($name == "") {
+            return false;
+        }
+
+        if ($email == "") {
+            return false;
+        }
+
+        if (strlen($message) < 32) {
+            return false;
+        }
+
+
+        $to = "ferusgirm@gmail.com";
+        $from = "$name<$email>";
+        $subject = substr($message, 0, 32) . "...";
+        $body = "From: $name\nEmail: $email\n\n$message";
+        return mail($to, $subject, $body, $from) ? true : false;
+    }
+
+?>
 <html>
 
     <head>
@@ -89,20 +118,30 @@
                 <p class="is-center"><i>That's alright, because we like hearing from you! Go ahead and fill out the form
                         below, or <a href="mailto:contact@bytelab.pw">email us</a>!</i></p>
 
-                <form class="pure-form pure-form-stacked is-center" id="contact"
-                      action="mailto:contact@bytelab.pw" method="post" enctype="text/plain">
+                <form class="pure-form pure-form-stacked is-center"
+                      action="index.php" method="post">
                     <fieldset>
                         <label for="name">Your Name</label>
-                        <input id="name" type="text" placeholder="Your Name">
+                        <input name="name" type="text" placeholder="Your Name">
 
                         <label for="email">Your Email</label>
-                        <input id="email" type="email" placeholder="Your Email">
+                        <input name="email" type="email" placeholder="Your Email">
 
                         <label for="content">Your Message</label>
-                        <textarea id="content" form="contact" placeholder="Your Message"></textarea>
-
-                        <button type="submit" class="pure-button">Contact Us!</button>
+                        <textarea name="content" placeholder="Your Message"></textarea>
                     </fieldset>
+                    <button name="submit" type="submit" class="pure-button">Contact Us!</button>
+                    <?php
+                        if (isset($_POST['submit'])) {
+                            echo "<p class=\"email-notice\">";
+                            if (mail_sent_correctly()) {
+                                echo "Your message was sent!";
+                            } else {
+                                echo "Whoops! Try again!";
+                            }
+                            echo "</p>";
+                        }
+                    ?>
                 </form>
             </div>
 

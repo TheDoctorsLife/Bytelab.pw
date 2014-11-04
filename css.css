@@ -197,6 +197,10 @@ label {
     border-radius: 10px;
 }
 
+.email-notice {
+    color: rgba(255, 255, 255, 0.6);
+}
+
 .footer {
     margin-top: -15px;
     background: #111111;
