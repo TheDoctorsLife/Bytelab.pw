@@ -1,16 +1,47 @@
-<?php
+<<?php
 
     function getSlogan() {
         $slogans = file("byte.me");
         return $slogans[array_rand($slogans)];
     }
 
-?>
+    function mail_sent_correctly() {
 
+        if (!isset($_POST["name"]) || !isset($_POST["email"]) || !isset($_POST["content"])) {
+            return false;
+        }
+
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $message = $_POST["content"];
+
+        if ($name == "") {
+            return false;
+        }
+
+        if ($email == "") {
+            return false;
+        }
+
+        if (strlen($message) < 32) {
+            return false;
+        }
+
+
+        $to = "contact@bytelab.pw";
+        $from = "$name<$email>";
+        $subject = substr($message, 0, 32) . "...";
+        $body = "From: $name\nEmail: $email\n\n$message";
+        return mail($to, $subject, $body, $from) ? true : false;
+    }
+
+?>
+<!DOCTYPE HTML>
 <html>
 
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Just the website to display the work of a few ragtag developers,
             and provide links to their work.">
@@ -27,13 +58,13 @@
             <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
                 <a class="pure-menu-heading" href>ByteLab</a>
                 <ul>
-                    <li><a href="https://github.com/Byte-Lab">
+                    <li><a href="https://github.com/Byte-Lab" target="_blank">
                             <i class="fa fa-fw fa-github"></i>
                             Source</a></li>
-                    <li><a href="http://ci.bytelab.pw">
+                    <li><a href="http://ci.bytelab.pw" target="_blank">
                             <i class="fa fa-fw fa-tasks"></i>
                             CI</a></li>
-                    <li><a href="http://jd.bytelab.pw">
+                    <li><a href="http://jd.bytelab.pw" target="_blank">
                             <i class="fa fa-fw fa-folder-open"></i>
                             Javadocs</a></li>
                 </ul>
@@ -58,8 +89,9 @@
                     <div class="pure-u-1-3">
                         <div class="l-box">
                             <h3 class="content-subhead">
+                                <a href="https://github.com/Byte-Lab/Warbands" target="_blank">
                                 <i class="fa fa-fw fa-asterisk"></i>
-                                <a href="http://wp.bytelab.pw" target="_blank">Warbands</a></h3>
+                                Warbands</h3></a>
                             <p>Warbands is an alternative to the popular plugin Factions, designed to be more modular
                                 and less bloated! The plugin has all of the features that made Factions unique and
                                 amazing, but none of the ones that made it difficult to setup and configure!
@@ -87,22 +119,32 @@
             <div class="ribbon l-box-lrg">
                 <h2 class="content-head content-head-ribbon is-center">Need to get ahold of us?</h2>
                 <p class="is-center"><i>That's alright, because we like hearing from you! Go ahead and fill out the form
-                        below, or <a href="mailto:contact@bytelab.pw">email us</a>!</i></p>
+                        below, or <a href="mailto:contact@bytelab.pw" target="_blank">email us</a>!</i></p>
 
-                <form class="pure-form pure-form-stacked is-center" id="contact"
-                      action="mailto:contact@bytelab.pw" method="post" enctype="text/plain">
+                <form class="pure-form pure-form-stacked is-center"
+                      action="index.php" method="post">
                     <fieldset>
                         <label for="name">Your Name</label>
-                        <input id="name" type="text" placeholder="Your Name">
+                        <input name="name" type="text" placeholder="Your Name">
 
                         <label for="email">Your Email</label>
-                        <input id="email" type="email" placeholder="Your Email">
+                        <input name="email" type="email" placeholder="Your Email">
 
                         <label for="content">Your Message</label>
-                        <textarea id="content" form="contact" placeholder="Your Message"></textarea>
-
-                        <button type="submit" class="pure-button">Contact Us!</button>
+                        <textarea name="content" placeholder="Your Message"></textarea>
                     </fieldset>
+                    <button name="submit" type="submit" class="pure-button">Contact Us!</button>
+                    <?php
+                        if (isset($_POST['submit'])) {
+                            echo "<p class=\"email-notice\">";
+                            if (mail_sent_correctly()) {
+                                echo "Your message was sent!";
+                            } else {
+                                echo "Whoops! Try again!";
+                            }
+                            echo "</p>";
+                        }
+                    ?>
                 </form>
             </div>
 
